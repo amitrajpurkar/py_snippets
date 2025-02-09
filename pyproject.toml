@@ -1,0 +1,24 @@
+[project]
+name = "example01"
+version = "0.1.0"
+description = "trying out virtual env setting for vscode"
+authors = [
+    {name = "Amit Rajpurkar",email = "amit.rajpurkar@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "requests (>=2.23.0,<3.0.0)"
+]
+package-mode = false
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^1.5.4"
+flake8 = "^3.8.4"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
