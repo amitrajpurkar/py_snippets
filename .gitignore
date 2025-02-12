@@ -172,5 +172,5 @@ cython_debug/
 
 
 # VS Code config, plus from poetry dependencies
-.vscode/
+#.vscode/
 .DS_Store
