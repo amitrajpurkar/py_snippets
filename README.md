@@ -9,10 +9,10 @@ needed to draw parallels to the java development world..
 * bringing in CONSISTENCY TO THE PROCESS is the key "driver"
 
 ### references/ links
-* [setup PyEnv, Poetry and VSCode|https://youtu.be/547Jr26duHQ?si=VHQ0-bZHvfXWHNB-]
-* [PyEnv doco|https://github.com/pyenv/pyenv]
-* [Poetry doco|https://python-poetry.org/docs/]
-* [VS Code Python config|https://code.visualstudio.com/docs/python/environments]
+* [setup PyEnv, Poetry and VSCode](https://youtu.be/547Jr26duHQ?si=VHQ0-bZHvfXWHNB-)
+* [PyEnv doco](https://github.com/pyenv/pyenv)
+* [Poetry doco](https://python-poetry.org/docs/)
+* [VS Code Python config](https://code.visualstudio.com/docs/python/environments)
 
 ### setup for machine/ operating system :: for Mac-OS
 * what system python installation you have.. installation of python via homebrew
