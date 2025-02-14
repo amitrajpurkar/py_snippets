@@ -8,6 +8,11 @@ needed to draw parallels to the java development world..
 * just writing code snippets in a single script file is NOT ENOUGH
 * bringing in CONSISTENCY TO THE PROCESS is the key "driver"
 
+### references/ links
+* [setup PyEnv, Poetry and VSCode|https://youtu.be/547Jr26duHQ?si=VHQ0-bZHvfXWHNB-]
+* [PyEnv doco|https://github.com/pyenv/pyenv]
+* [Poetry doco|https://python-poetry.org/docs/]
+* [VS Code Python config|https://code.visualstudio.com/docs/python/environments]
 
 ### setup for machine/ operating system :: for Mac-OS
 * what system python installation you have.. installation of python via homebrew
@@ -29,3 +34,9 @@ needed to draw parallels to the java development world..
 * each python project folder needs a ".vscode" folder having setting.json
 * we need to synchronize VS code with Poetry for each project.
 
+
+### steps for regular usage
+* for day to day project usage here are some activities/ tasks that are commonly done
+* add / remove dependencies
+* add/update dependencies for specific group.
+* add new python project less frequently
