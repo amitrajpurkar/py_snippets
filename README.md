@@ -54,3 +54,12 @@ needed to draw parallels to the java development world..
 * add / remove dependencies
 * add/update dependencies for specific group.
 * add new python project less frequently
+
+
+### further research
+* do you need to adhere to framework? and why?
+* Django vs Flask... [from Jetbrains|https://blog.jetbrains.com/pycharm/2023/11/django-vs-flask-which-is-the-best-python-web-framework/]
+* another comparison.. [geek4geeks|https://www.geeksforgeeks.org/python/differences-between-django-vs-flask/]
+* in short learn both of them
+* [django|https://www.djangoproject.com]
+* [flask|https://flask.palletsprojects.com/en/stable/]
