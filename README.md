@@ -35,6 +35,20 @@ needed to draw parallels to the java development world..
 * we need to synchronize VS code with Poetry for each project.
 
 
+### using UV instead of Poetry
+* UV is another package manager for python
+* UV is becoming a norm these days (@July-2025)
+* on my mac, i added UV using HomeBrew
+* understand usage of UV
+* get handle to a proper project-structure for python.. Flask-Application offers one
+* project structure must include:
+  * which files stay in the root-location of project
+  * how is src/main and src/test organized
+  * what are the standard subfolders under src/main
+  * how to tell UV or Vercel or the build file which one is the "bootstrap.py" the main script that starts the application
+  * things like that, etc.
+
+
 ### steps for regular usage
 * for day to day project usage here are some activities/ tasks that are commonly done
 * add / remove dependencies
