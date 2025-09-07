@@ -56,6 +56,15 @@ needed to draw parallels to the java development world..
 * add new python project less frequently
 
 
+### adhoc notes..
+* handy commands for static code analysis frorm terminal
+ * ```git shortlog -s -n```
+ * ```cloc $(git ls-files)```
+ * ```git log --pretty=format:'%h - %an, %ar : %s'```
+ * https://github.com/semgrep/semgrep
+ * https://github.com/ejwa/gitinspector
+
+
 ### further research
 * do you need to adhere to framework? and why?
 * Django vs Flask... [from Jetbrains](https://blog.jetbrains.com/pycharm/2023/11/django-vs-flask-which-is-the-best-python-web-framework/)
