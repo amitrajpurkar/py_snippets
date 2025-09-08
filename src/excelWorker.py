@@ -10,11 +10,8 @@ import openpyxl
 from openpyxl import load_workbook
 from openpyxl import Workbook
 from openpyxl.worksheet.datavalidation import DataValidation
+from openpyxl.styles import Protection
 import csv 
-
-# df = pd.read_csv('data.csv')
-# print(df)
-# df.to_excel('output.xlsx', index=False)
 
 class PlanShell:
     def __init__(self, name: str, pkg: str, pmtid: int, varn: int) -> None:
@@ -88,41 +85,60 @@ def addLookupSheet(workbook) -> None:
     pass
 
 def addPlanListValidation(sheet) -> None:
-    dv = DataValidation(type="list", formula1='"PPO plan in PPC no cap", "PPO plan in AltNet no cap", "PPO plan in Trad no cap", "HMO plan in PPC with cap", "HMO plan in AltNet with cap"', allow_blank=True)
+    # dv = DataValidation(type="list", formula1='"PPO plan in PPC no cap", "PPO plan in AltNet no cap", "PPO plan in Trad no cap", "HMO plan in PPC with cap", "HMO plan in AltNet with cap"', allow_blank=True)
+    
+    dv = DataValidation(type="list", formula1='=$Lookup!$A$2:$A$6', allow_blank=True)
     dv.error ='Your entry is not in the list'
     dv.errorTitle = 'Invalid entry'
     dv.errorType = 'warning'
-    dv.prompt = 'Please select from the list'
-    dv.promptTitle = 'List Selection'
+    # dv.prompt = 'Please select from the list'
+    # dv.promptTitle = 'List Selection'
     dv.showErrorMessage = True
     dv.showInputMessage = True
 
     # attach data validation first to the sheet
     sheet.add_data_validation(dv)
+    sheet.column_dimensions['D'].width = 30
 
     # attach data validation to entire column
     # dv.add(worksheet=sheet, col=4)
     dv.add('D1:D1048576')
     pass
 
-def addPckIDFormula(column) -> None:
-    column[1] = "=B1"
+def addPkgIDFormula(sheet) -> None:
+    # perplexity is good
+    max_row = sheet.max_row  # Get the maximum row number
+    for row in range(2, max_row + 1):     # Usually start at row 2 to skip header
+        # Assign VLOOKUP formula to column E for each row
+        sheet[f'E{row}'].value = f'=VLOOKUP(D{row},Lookup!$A$2:$D${max_row},2,FALSE)'
     pass
 
-def addPmtIDFormula(column) -> None:
-    column[2] = "=B1"
+def addPmtIDFormula(sheet) -> None:
+    max_row = sheet.max_row  # Get the maximum row number
+    for row in range(2, max_row + 1):     # Usually start at row 2 to skip header
+        # Assign VLOOKUP formula to column E for each row
+        sheet[f'F{row}'].value = f'=VLOOKUP(D{row},Lookup!$A$2:$D${max_row},3,FALSE)'
     pass
 
-def addGLFormula(column) -> None:
-    column[3] = "=B1"
+def addPublicFlagFormula(sheet) -> None:
+    dv = DataValidation(type="list", formula1='"Y, N"', allow_blank=True)
+    dv.error ='Your entry is not in the list'
+    dv.errorTitle = 'Invalid entry'
+    dv.errorType = 'warning'
+    sheet.add_data_validation(dv)
+    dv.add('L1:L1048576')
     pass
 
 def protectSheet(sheet) -> None:
-    sheet.security.lockStructure = True
-    sheet.protection.delete = True
-    sheet.protection.sheet = True
+    for row in sheet.iter_rows(min_row=1, max_row=sheet.max_row, min_col=4, max_col=4):
+        for cell in row:
+            cell.protection = Protection(locked=False)
+    
+    # sheet.security.lockStructure = True
+    # sheet.protection.delete = True
+    sheet.protection.sheet = True  # this will unlock the column 4 or D
     # sheet.protection.password = 'password'
-    sheet.protection.enable()
+    # sheet.protection.enable()
     pass
 
 
@@ -138,15 +154,11 @@ def main():
     readCSV('data.csv', sheet)
     addLookupSheet(workbook)
 
-    # addPlanListValidation(sheet.columns.column(1))
     addPlanListValidation(sheet)
-    # addPckIDFormula(sheet.columns.column(2))
-    # addPmtIDFormula(sheet.columns.column(3))
-    # addGLFormula(sheet.columns.column(4))
-
-    # unlockPlanRegion(sheet)
-
-    # protectSheet(sheet)
+    addPkgIDFormula(sheet)
+    addPublicFlagFormula(sheet)
+ 
+    protectSheet(sheet)
     writeExcel(workbook, 'output.xlsx')
     pass
 
